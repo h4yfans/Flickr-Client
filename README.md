@@ -8,7 +8,7 @@ You have to **logged in** if you want to save your favorite photos and previous 
 Clone the repository and create a virtual environment with **pipenv**
 
     $ git clone git@github.com:h4yfans/Hipo-Flickr-Client.git
-	$ cd Hipo-Flickr-Client
+	$ cd Flickr-Client
 	$ pipenv install
 	$ pipenv shell
 	
