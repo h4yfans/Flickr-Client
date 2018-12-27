@@ -8,14 +8,22 @@ class FlickrAPI(object):
     URL = "https://api.flickr.com/services/rest/"
     METHOD = "flickr.photos.search"
     images_info = []
-    per_page = 6
+    PER_PAGE = 6
 
     def __init__(self, tag, current_page):
         try:
-            r = requests.get(
-                f'{self.URL}?method={self.METHOD}&api_key={self.API_KEY}&tags={tag}&per_page={self.per_page}&page={current_page}&format=json&nojsoncallback=1')
+            r = requests.get(self.URL, params= {
+                'method': self.METHOD,
+                'api_key': self.API_KEY,
+                'tags': tag,
+                'per_page': self.PER_PAGE,
+                'page': current_page,
+                'format': 'json',
+                'nojsoncallback': 1
+            })
+
             self.images_info = r.json()
-        except TypeError:
+        except requests.exceptions.ConnectionError:
             self.images_info = []
 
     # https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
