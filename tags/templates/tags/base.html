@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% comment %}Style Section{% endcomment %}
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'tags/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'tags/css/custom.css' %}">
+
+
+    <title>Flickr Client {% block title %}{% endblock %} </title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'tags:index' %}">Flickr Client |
+                {% if user.is_authenticated %}
+                    Welcome {{ request.user.username }}
+                {% endif %}</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'tags:index' %}">Home</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'tags:favorites' %}">Favorites</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            <li><a href="{% url 'password_reset' %}">Change Passoword</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="col-sm-4 col-sm-offset-4 text-center">
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% block content %}
+{% endblock %}
+</body>
+{% comment %}JavaScript Section{% endcomment %}
+
+<script type="application/javascript" src="{% static 'tags/js/jquery-3.3.1.min.js' %}"></script>
+<script type="application/javascript" src="{% static 'tags/js/bootstrap.js' %}"></script>
+{% block scripts %}{% endblock %}
+</html>

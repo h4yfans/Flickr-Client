@@ -1,0 +1,107 @@
+{% extends 'tags/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row search-section">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <h1 class="title">The ultimate Flickr Client</h1>
+                    <form method="GET">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" placeholder="Tags..." name="tag"
+                                   value="{{ request.GET.tag }}">
+                            {% comment %}{{ form.as_p }}{% endcomment %}
+                            <span class="input-group-addon">
+                            <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            Search
+                            </button>
+                        </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-8 col-xs-12">
+                {% if images %}
+                    <h2>Results</h2>
+                    <div class="row">
+                        <div class="images">
+                            {% for image in images %}
+                                <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe image-seciton">
+                                    <img src="{{ image }}" class="img-responsive searched_image"
+                                         id="{{ forloop.counter }}">
+                                    <span class="glyphicon glyphicon-heart {% if user.is_authenticated and image in user_likes %} liked-heart {% endif %}"
+                                          id="heart-{{ forloop.counter }}"></span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="pagination">
+                            {% if previous_page > 0 %}
+                                <a href="?tag={{ request.GET.tag }}&page={{ previous_page }}">Previous</a>
+                            {% endif %}
+                            <a href="?tag={{ request.GET.tag }}&page={{ next_page }}">Next</a>
+                        </div>
+                    </div>
+
+                {% elif images is None %}
+                    <h2>Type something for search.</h2>
+                {% else %}
+                    <h2>Not found any image</h2>
+                {% endif %}
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="hastags">
+                    <h2>Previous Searches by You</h2>
+                    <ul>
+                        {% if user.is_authenticated %}
+                            {% if previous_search_tags %}
+                                {% for previous_search_tag in previous_search_tags %}
+                                    <li>
+                                        <a href="{% url 'tags:index' %}?tag={{ previous_search_tag }}"># {{ previous_search_tag }}</a>
+                                        <div class="badge">{{ previous_search_tag.count }}</div>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                No previous search
+                            {% endif %}
+                        {% else %}
+                            <small class="text-muted previous-login">
+                                <a href="{% url 'login' %}" class="">You have to login for previous searches</a>
+                            </small>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="hastags most-search-tags">
+                    <h2>Most Search Tags</h2>
+                    <ul>
+                        {% if most_search_tags %}
+                            {% for most_search_tag in most_search_tags %}
+                                <li>
+                                    <a href="{% url 'tags:index' %}?tag={{ most_search_tag }}"># {{ most_search_tag }}</a>
+                                    <div class="badge">{{ most_search_tag.count }}</div>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            No most search tags
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% csrf_token %}
+
+{% endblock %}
+
+
+{% load static %}
+{% block scripts %}
+    <script src="{% static 'tags/js/ajax.js' %}"></script>
+{% endblock %}

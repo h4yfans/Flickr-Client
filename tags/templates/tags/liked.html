@@ -1,0 +1,42 @@
+{% extends 'tags/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row search-section">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <h1 class="title">Likes</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-xs-12">
+                {% if images %}
+                    <h2></h2>
+                    <div class="row">
+                        {% for image in images %}
+                            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe image-seciton">
+                                <img src="{{ image.image_url }}" class="img-responsive searched_image"
+                                     id="{{ forloop.counter }}">
+                                <span class="glyphicon glyphicon-heart liked-heart"
+                                      id="heart-{{ forloop.counter }}"></span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% elif images is None %}
+                    <h2>Type something for search.</h2>
+                {% else %}
+                    <h2>Not found any image</h2>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+        {% csrf_token %}
+
+{% endblock %}
+
+{% load static %}
+{% block scripts %}
+    <script src="{% static 'tags/js/ajax.js' %}"></script>
+{% endblock %}

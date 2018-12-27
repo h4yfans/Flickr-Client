@@ -1,0 +1,188 @@
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+/*Navbar*/
+.navbar {
+    border-radius: 0;
+}
+
+
+/*Search Section*/
+.search-section {
+    margin-bottom: 5%;
+}
+
+.title {
+    text-align: center;
+}
+
+#imaginary_container {
+    margin-top: 10%;
+}
+
+.stylish-input-group .input-group-addon {
+    background: white !important;
+}
+
+.stylish-input-group .form-control {
+    border-right: 0;
+    box-shadow: 0 0 0;
+    border-color: #ccc;
+}
+
+.stylish-input-group button {
+    border: 0;
+    background: transparent;
+}
+
+
+/*Result Section*/
+.gallery-title {
+    font-size: 36px;
+    color: #42B32F;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.filter-button {
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #42B32F;
+    margin-bottom: 30px;
+
+}
+
+.filter-button:hover {
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42B32F;
+
+}
+
+.btn-default:active .filter-button:active {
+    background-color: #42B32F;
+    color: white;
+}
+
+.port-image {
+    width: 100%;
+}
+
+.gallery_product {
+    margin-bottom: 30px;
+}
+
+.gallery_product img {
+    width: 220px;
+    height: 180px;
+    cursor: pointer;
+}
+
+.gallery_product {
+    position: relative;
+}
+
+.glyphicon-heart {
+    position: absolute;
+    top: 15px;
+    right: 38px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.gallery_product a {
+    color: #fff;
+}
+
+.liked-heart {
+    color: #b20000;
+    font-size: 23px;
+}
+
+.image-seciton {
+    position: relative;
+    overflow: hidden;
+}
+
+.searched_image {
+    max-width: 100%;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.searched_image:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+/*Pagination Section*/
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    font-size: 20px;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #764758;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #dd8668;
+    border-radius: 5px;
+}
+
+
+/*Right Sidebar*/
+.hastags li {
+    font-size: 16px;
+    list-style-type: none;
+}
+
+.hastags li .badge {
+    font-size: 10px;
+}
+
+.hastags a {
+    text-decoration: none;
+    color: #000
+}
+
+.hastags a:hover {
+    text-decoration: underline;
+    color: #e0064d;
+}
+
+.previous-login a{
+    text-decoration: underline;
+    color: #e0064d;
+}
+
+.most-search-tags li a {
+    font-style: italic;
+}
