@@ -1,10 +1,11 @@
 import requests
 from django.conf import settings
+from flickrproject.settings import dev
 
 
 # https://www.flickr.com/services/api/misc.urls.html
 class FlickrAPI(object):
-    API_KEY = settings.FLICKR_PUBLIC_KEY
+    API_KEY = dev.FLICKR_KEY
     URL = "https://api.flickr.com/services/rest/"
     METHOD = "flickr.photos.search"
     images_info = []

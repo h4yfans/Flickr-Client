@@ -113,14 +113,4 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 LOGIN_REDIRECT_URL = 'tags:index'
 
-# APIKEY
-# Hipo API Key: 1ddb7df62cbdc4e07f6ec75ca78e2960
-FLICKR_PUBLIC_KEY = '1ddb7df62cbdc4e07f6ec75ca78e2960'
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'kaan94karaca@gmail.com'
-EMAIL_HOST_PASSWORD = 'qsvsskuellhiraoh'
 
