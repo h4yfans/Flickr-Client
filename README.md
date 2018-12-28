@@ -7,7 +7,7 @@ You have to **logged in** if you want to save your favorite photos and previous 
 # Installation
 Clone the repository and create a virtual environment with **pipenv**
 
-    $ git clone git@github.com:h4yfans/Hipo-Flickr-Client.git
+    $ git clone git@github.com:h4yfans/Flickr-Client.git
 	$ cd Flickr-Client
 	$ pipenv install
 	$ pipenv shell
@@ -16,18 +16,20 @@ If you are not using **pipenv**, type:
 
     $ pip install -r requirements.txt
 	
-After installed all packages, you have to create migrations and superuser
+After installed all packages, you have to migrations and create superuser
 		
 
     python manage.py migrate
     python manage.py createsuperuser
     
 
-And then follow the steps for initialize the `FLICKR_API_KEY` and `MAIL` 
+### Project settings
 
- - Go to settings.py
- - Change `FLICKR_API_KEY` to *Hipo's Public Key* `1ddb7df62cbdc4e07f6ec75ca78e2960` or change your `os.environ`
- - Once you change you API key for Flickr, next you should add your `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` for password reset.
+You don't have to set `API` keys or `EMAIL HOST`. Because `settings` has separate environment folder as `dev.py` and `prod.py`
+
+You just need to set `DJANGO_SETTINGS_MODULE`, see:
+
+`export DJANGO_SETTINGS_MODULE=flickrproject.settings.dev`
 
 Run project
 
