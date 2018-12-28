@@ -28,6 +28,7 @@ class FlickrAPI(object):
 
     # https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
     def constructed_urls(self):
-        images = [f"https://farm{image.get('farm')}.staticflickr.com/{image.get('server')}/{image.get('id')}_{image.get('secret')}.jpg"for image in self.images_info.get('photos')['photo']]
-
-        return images
+        if self.images_info.get('stat') == 'ok':
+            images = [f"https://farm{image.get('farm')}.staticflickr.com/{image.get('server')}/{image.get('id')}_{image.get('secret')}.jpg"for image in self.images_info.get('photos')['photo']]
+            return images
+        return []

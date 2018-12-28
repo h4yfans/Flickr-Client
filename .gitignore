@@ -89,3 +89,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+/flickrproject/settings/local
