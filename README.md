@@ -15,6 +15,16 @@ Clone the repository and create a virtual environment with **pipenv**
 If you are not using **pipenv**, type:
 
     $ pip install -r requirements.txt
+    
+    
+### Project settings
+
+You don't have to set `API` keys or `EMAIL HOST`. Because `settings` has separate environment folder as `dev.py` and `prod.py`
+
+You just need to set `DJANGO_SETTINGS_MODULE`, see:
+
+`export DJANGO_SETTINGS_MODULE=flickrproject.settings.dev`
+
 	
 After installed all packages, you have to migrations and create superuser
 		
@@ -23,13 +33,6 @@ After installed all packages, you have to migrations and create superuser
     python manage.py createsuperuser
     
 
-### Project settings
-
-You don't have to set `API` keys or `EMAIL HOST`. Because `settings` has separate environment folder as `dev.py` and `prod.py`
-
-You just need to set `DJANGO_SETTINGS_MODULE`, see:
-
-`export DJANGO_SETTINGS_MODULE=flickrproject.settings.dev`
 
 Run project
 
