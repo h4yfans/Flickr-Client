@@ -19,7 +19,7 @@ If you are not using **pipenv**, type:
     
 ### Project settings
 
-You don't have to set `API` keys or `EMAIL HOST`. Because `settings` has separate environment folder as `dev.py` and `prod.py`
+You don't have to set `API` keys or `EMAIL HOST`. Because `settings` has separate environment file as `dev.py` and `prod.py`
 
 You just need to set `DJANGO_SETTINGS_MODULE`, see:
 
